@@ -15,14 +15,13 @@ export default {
     },
     methods: {
         generateAllPokemon() {
-            let pokemon = [];
             fetch('../public/pokemon-json/pokedex.json') // il file.json, per far funzionare la fetch, deve assolutamente stare nella cartella public
                 .then(response => {
                     return response.json();
                 })
                 .then(data => {
-                    pokemon = data;
-                    console.log(pokemon);
+                    this.store.allPokemon = data;
+                    console.log(this.store.allPokemon);
                 })
                 .catch(err => { });
         }
