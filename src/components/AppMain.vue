@@ -1,10 +1,12 @@
 <script>
 import { store } from "../store";
 import SingleCard from "./SingleCard.vue";
+import AppFilter from "./AppFilter.vue";
 export default {
     name: 'AppMain',
     components: {
         SingleCard,
+        AppFilter,
     },
     data() {
         return {
@@ -15,8 +17,11 @@ export default {
 </script>
 
 <template>
-    <main class="d-flex flex-wrap justify-content-center">
-        <SingleCard></SingleCard>
+    <main>
+        <AppFilter></AppFilter>
+        <div class="d-flex flex-wrap justify-content-center">
+            <SingleCard></SingleCard>
+        </div>
     </main>
 </template>
 

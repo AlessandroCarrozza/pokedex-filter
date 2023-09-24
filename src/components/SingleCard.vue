@@ -42,6 +42,6 @@ export default {
 
 <style scoped lang="scss">
 .type {
-    border: 2px solid black;
+    border: 1.5px solid black;
 }
 </style>
