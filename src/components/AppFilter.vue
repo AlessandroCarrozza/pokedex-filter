@@ -27,15 +27,16 @@ export default {
 </script>
 
 <template>
-    <div class="filter-container text-center py-1">
+    <div class="filter-container text-center">
         <div class="search-container d-inline-block">
             <i class="fa fa-search px-3"></i>
-            <input type="text" class="search-bar" placeholder="Cerca per nome...">
+            <input v-model="this.store.searchPokemon" type="text" class="search-bar" placeholder="Cerca per nome...">
         </div>
 
         <div class="filter-type d-inline-block px-5">
-            <label for="type" class="d-block py-1">Cerca per tipo</label>
-            <select class="form-select form-select-lg mb-3 fs-6 text-center" aria-label=".form-select-lg example">
+            <div class="py-1">Cerca per tipo</div>
+            <select v-model="this.store.typeSelected" class="form-select form-select-lg mb-3 fs-6 text-center"
+                aria-label=".form-select-lg example" name="filter" id="filter">
                 <option value="all">All</option>
                 <option v-for="tipo in this.store.allTypes" :value="tipo.english">{{ tipo.english }}</option>
             </select>
@@ -44,36 +45,36 @@ export default {
 </template>
 
 <style scoped lang="scss">
-.search-container {
-    border: 1px solid lightgrey;
-    border-radius: 7px;
+.filter-container {
+    padding-top: 100px;
 
-    .search-bar {
+    .search-container {
+        border: 1px solid lightgrey;
         border-radius: 7px;
-        width: 350px;
-        height: 50px;
-        border: none;
-        outline: none;
-        font-size: 1.2rem;
-    }
-}
 
-.filter-type {
-    select {
-        outline: none;
-
-        &:focus {
-            border: 1px solid lightgrey;
-            box-shadow: none;
+        .search-bar {
+            border-radius: 7px;
+            width: 350px;
+            height: 50px;
+            border: none;
+            outline: none;
+            font-size: 1.2rem;
         }
     }
 
-    label {
-        font-size: 1.1rem;
-    }
+    .filter-type {
+        select {
+            outline: none;
 
-    option {
-        text-align: left;
+            &:focus {
+                border: 1px solid lightgrey;
+                box-shadow: none;
+            }
+        }
+
+        option {
+            text-align: left;
+        }
     }
 }
 </style>

@@ -1,11 +1,13 @@
 <script>
 import AppHeader from "./components/AppHeader.vue";
+import AppFilter from "./components/AppFilter.vue";
 import AppMain from "./components/AppMain.vue";
 import { store } from "./store";
 
 export default {
     components: {
         AppHeader,
+        AppFilter,
         AppMain,
     },
     data() {
@@ -19,8 +21,13 @@ export default {
                 .then(response => {
                     return response.json();
                 })
+                // .filter(pokemon => pokemon.type.includes('Grass'))
                 .then(data => {
-                    this.store.allPokemon = data;
+                    if (this.store.typeSelected == 'all') {
+                        this.store.allPokemon = data;
+                    } else {
+                        this.store.allPokemon = data.filter(pokemon => pokemon.type.includes(this.store.typeSelected));
+                    }
                     console.log(this.store.allPokemon);
                 })
                 .catch(err => { });
@@ -34,6 +41,7 @@ export default {
 
 <template>
     <AppHeader></AppHeader>
+    <AppFilter></AppFilter>
     <AppMain></AppMain>
 </template>
 

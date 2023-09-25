@@ -3,4 +3,5 @@ export const store = reactive({
     allPokemon: [],
     allTypes: [],
     searchPokemon: '',
+    typeSelected: 'all',
 })
