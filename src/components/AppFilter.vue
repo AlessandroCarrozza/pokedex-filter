@@ -30,13 +30,14 @@ export default {
     <div class="filter-container text-center">
         <div class="search-container d-inline-block">
             <i class="fa fa-search px-3"></i>
-            <input v-model="this.store.searchPokemon" type="text" class="search-bar" placeholder="Cerca per nome...">
+            <input v-model="this.store.searchPokemon" type="text" class="search-bar" placeholder="Cerca per nome..."
+                @keyup="$emit('filteredPokemon')">
         </div>
 
         <div class="filter-type d-inline-block px-5">
             <div class="py-1">Cerca per tipo</div>
             <select v-model="this.store.typeSelected" class="form-select form-select-lg mb-3 fs-6 text-center"
-                aria-label=".form-select-lg example" name="filter" id="filter">
+                aria-label=".form-select-lg example" name="filter" id="filter" @change="$emit('filteredPokemon')">
                 <option value="all">All</option>
                 <option v-for="tipo in this.store.allTypes" :value="tipo.english">{{ tipo.english }}</option>
             </select>
