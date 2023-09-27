@@ -1,5 +1,6 @@
 <script>
 import { store } from "../store";
+import { generateAllPokemon } from "../main";
 export default {
     name: 'AppFilter',
     data() {
@@ -20,21 +21,7 @@ export default {
                 .catch(err => { });
         },
         generateAllPokemon() {
-            fetch('../public/pokemon-json/pokedex.json') // il file.json, per far funzionare la fetch, deve assolutamente stare nella cartella public
-                .then(response => {
-                    return response.json();
-                })
-                // .filter(pokemon => pokemon.type.includes('Grass'))
-                .then(data => {
-                    if (this.store.typeSelected == 'all') {
-                        this.store.allPokemon = data;
-                    } else {
-                        this.store.allPokemon = data.filter(pokemon => pokemon.type.includes(this.store.typeSelected));
-                    }
-
-                    this.store.allPokemon = this.store.allPokemon.filter(pokemon => pokemon.name.english.toUpperCase().startsWith(this.store.searchPokemon.toUpperCase()));
-                })
-                .catch(err => { });
+            generateAllPokemon(this.store);
         }
     },
     created() {

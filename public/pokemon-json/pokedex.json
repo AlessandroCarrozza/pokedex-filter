@@ -1,4 +1,5 @@
-[{
+[
+  {
     "id": 1,
     "name": {
       "english": "Bulbasaur",
@@ -15800,7 +15801,7 @@
   {
     "id": 772,
     "name": {
-      "english": "Type: Null",
+      "english": "Type Zero",
       "japanese": "タイプ：ヌル",
       "chinese": "属性：空",
       "french": "Silvallié"

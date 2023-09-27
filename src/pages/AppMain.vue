@@ -7,7 +7,12 @@ export default {
     components: {
         AppFilter,
         AppList,
-    }
+    },
+    data() {
+        return {
+            store,
+        }
+    },
 }
 </script>
 
