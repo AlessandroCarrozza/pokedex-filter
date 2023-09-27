@@ -18,6 +18,23 @@ export default {
                     console.log(this.store.allTypes);
                 })
                 .catch(err => { });
+        },
+        generateAllPokemon() {
+            fetch('../public/pokemon-json/pokedex.json') // il file.json, per far funzionare la fetch, deve assolutamente stare nella cartella public
+                .then(response => {
+                    return response.json();
+                })
+                // .filter(pokemon => pokemon.type.includes('Grass'))
+                .then(data => {
+                    if (this.store.typeSelected == 'all') {
+                        this.store.allPokemon = data;
+                    } else {
+                        this.store.allPokemon = data.filter(pokemon => pokemon.type.includes(this.store.typeSelected));
+                    }
+
+                    this.store.allPokemon = this.store.allPokemon.filter(pokemon => pokemon.name.english.toUpperCase().startsWith(this.store.searchPokemon.toUpperCase()));
+                })
+                .catch(err => { });
         }
     },
     created() {
@@ -31,13 +48,13 @@ export default {
         <div class="search-container d-inline-block">
             <i class="fa fa-search px-3"></i>
             <input v-model="this.store.searchPokemon" type="text" class="search-bar" placeholder="Cerca per nome..."
-                @keyup="$emit('filteredPokemon')">
+                @keyup="this.generateAllPokemon()">
         </div>
 
         <div class="filter-type d-inline-block px-5">
             <div class="py-1">Cerca per tipo</div>
             <select v-model="this.store.typeSelected" class="form-select form-select-lg mb-3 fs-6 text-center"
-                aria-label=".form-select-lg example" name="filter" id="filter" @change="$emit('filteredPokemon')">
+                aria-label=".form-select-lg example" name="filter" id="filter" @change="this.generateAllPokemon()">
                 <option value="all">All</option>
                 <option v-for="tipo in this.store.allTypes" :value="tipo.english">{{ tipo.english }}</option>
             </select>

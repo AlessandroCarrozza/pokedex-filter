@@ -2,7 +2,7 @@
 import { store } from "../store";
 import SingleCard from "./SingleCard.vue";
 export default {
-    name: 'AppMain',
+    name: 'AppList',
     components: {
         SingleCard,
     },

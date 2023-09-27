@@ -1,14 +1,14 @@
 <script>
 import AppHeader from "./components/AppHeader.vue";
 import AppFilter from "./components/AppFilter.vue";
-import AppMain from "./components/AppMain.vue";
+import AppList from "./components/AppList.vue";
 import { store } from "./store";
 
 export default {
     components: {
         AppHeader,
         AppFilter,
-        AppMain,
+        AppList,
     },
     data() {
         return {
@@ -42,8 +42,7 @@ export default {
 
 <template>
     <AppHeader></AppHeader>
-    <AppFilter @filteredPokemon="generateAllPokemon"></AppFilter>
-    <AppMain></AppMain>
+    <router-view></router-view>
 </template>
 
 <style></style>
