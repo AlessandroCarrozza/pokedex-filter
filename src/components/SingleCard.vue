@@ -35,7 +35,8 @@ export default {
             <div class="types">
                 <span v-for="tipo in pokemon.type" class="type d-inline-block mb-3 mx-1 rounded px-2">{{ tipo }}</span>
             </div>
-            <a href="#" class="btn btn-primary d-block">Vedi dettagli</a>
+            <router-link :to="{ name: 'show', params: { id: pokemon.id } }" class="btn btn-primary d-block">Vedi
+                dettagli</router-link>
         </div>
     </div>
 </template>

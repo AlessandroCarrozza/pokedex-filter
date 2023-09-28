@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import AppMain from "./pages/AppMain.vue";
 import AppContacts from "./pages/AppContacts.vue";
+import AppShow from "./pages/AppShow.vue";
 
 const router = createRouter(
     {
@@ -15,6 +16,11 @@ const router = createRouter(
                 path: "/contatti",
                 name: "contact",
                 component: AppContacts
+            },
+            {
+                path: "/dettagli:id",
+                name: "show",
+                component: AppShow
             },
         ]
     }

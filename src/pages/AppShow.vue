@@ -10,6 +10,8 @@ export default {
 }
 </script>
 
-<template></template>
+<template>
+    <h1>qui i dettagli</h1>
+</template>
 
 <style scoped lang="scss"></style>
