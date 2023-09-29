@@ -50,7 +50,7 @@ export default {
 </script>
 
 <template>
-    <h1 class="pt-5">{{ this.singlePokemon[0].name.english }}</h1>
+    <h1 class="pt-5" v-if="this.singlePokemon.length > 0">{{ this.singlePokemon[0].name.english }}</h1>
     <img :src="`../../public/images/${this.numPhoto}.png`" alt="">
 </template>
 

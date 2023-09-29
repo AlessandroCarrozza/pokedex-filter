@@ -25,6 +25,7 @@ export default {
         },
         deleteSearch() {
             this.store.searchPokemon = '';
+            this.generateAllPokemon();
         }
     },
     mounted() {
