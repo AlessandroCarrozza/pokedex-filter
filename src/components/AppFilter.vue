@@ -22,9 +22,12 @@ export default {
         },
         generateAllPokemon() {
             generateAllPokemon(this.store);
+        },
+        deleteSearch() {
+            this.store.searchPokemon = '';
         }
     },
-    created() {
+    mounted() {
         this.generateAllTypes();
     }
 }
@@ -36,11 +39,13 @@ export default {
             <i class="fa fa-search px-3"></i>
             <input v-model="this.store.searchPokemon" type="text" class="search-bar" placeholder="Cerca per nome..."
                 @keyup="this.generateAllPokemon()">
+            <span class="delete px-3" :class="this.store.searchPokemon.length == 0 ? 'invisible' : ''"
+                @click="this.deleteSearch">X</span>
         </div>
 
         <div class="filter-type d-inline-block px-5">
             <div class="py-1">Cerca per tipo</div>
-            <select v-model="this.store.typeSelected" class="form-select form-select-lg mb-3 fs-6 text-center"
+            <select v-model="this.store.typeSelected" class="form-select form-select-lg mb-3 text-center"
                 aria-label=".form-select-lg example" name="filter" id="filter" @change="this.generateAllPokemon()">
                 <option value="all">All</option>
                 <option v-for="tipo in this.store.allTypes" :value="tipo.english">{{ tipo.english }}</option>
@@ -65,11 +70,18 @@ export default {
             outline: none;
             font-size: 1.2rem;
         }
+
+        .delete {
+            cursor: pointer;
+            color: grey;
+            font-size: 1.2rem;
+        }
     }
 
     .filter-type {
         select {
             outline: none;
+            font-size: 1.2rem;
 
             &:focus {
                 border: 1px solid lightgrey;
@@ -81,5 +93,9 @@ export default {
             text-align: left;
         }
     }
+}
+
+.invisible {
+    visibility: hidden;
 }
 </style>
