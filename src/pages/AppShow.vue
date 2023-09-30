@@ -50,12 +50,24 @@ export default {
 </script>
 
 <template>
-    <h1 class="pt-5" v-if="this.singlePokemon.length > 0">{{ this.singlePokemon[0].name.english }}</h1>
-    <img :src="`../../public/images/${this.numPhoto}.png`" alt="">
+    <div class="text-center" v-if="this.singlePokemon.length > 0">
+        <h1 class="p-4">{{ this.singlePokemon[0].name.english }}</h1>
+        <img :src="`../../public/images/${this.numPhoto}.png`" :alt="this.singlePokemon[0].name.english">
+        <ul class="d-flex justify-content-center py-5">
+            <li v-for="(stat, key) in this.singlePokemon[0].base" class="px-3">
+                <span class="d-inline-block">{{ key }}:</span>
+                <h4 class="d-inline-block px-1">{{ stat }}</h4>
+            </li>
+        </ul>
+    </div>
 </template>
 
 <style scoped lang="scss">
-h1 {
-    font-size: 10rem;
+.text-center {
+    padding-top: 100px;
+}
+
+li {
+    list-style: none;
 }
 </style>
