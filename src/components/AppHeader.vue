@@ -9,7 +9,7 @@ export default {
         <nav class="navbar bg-body-secondary">
             <div class="container-fluid d-flex justify-content-center">
                 <router-link :to="{ name: 'home' }" class="navbar-brand mx-5 p-0" href="#">Pokèdex</router-link>
-                <img src="../assets/pokeball-logo.png" alt="Logo">
+                <a href="#"><img src="../assets/pokeball-logo.png" alt="Logo"></a>
                 <router-link :to="{ name: 'contact' }" class="navbar-brand mx-5 p-0" href="#">Contatti</router-link>
             </div>
         </nav>
